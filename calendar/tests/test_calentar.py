@@ -5,65 +5,57 @@ from datetime import date
 @pytest.mark.parametrize(
     "day_str, expected_year, expected_month, expected_day",
     [
-        ('2019, 12, 31', '2019', '12', '31'),
-        ('1977, 11, 8', '1977', '11', '8'),
-        ('2001, 2, 30', '2001', '2', '30')
+        ('2019, 12, 31', 2019, 12, 31),
+        ('1977, 11, 8', 1977, 11, 8),
+        ('2001, 2, 28', 2001, 2, 28)
 ])
 def test_get_day_with_comas(day_str, expected_year, expected_month, expected_day):
+    expected_date = date(expected_year, expected_month, expected_day)
+    day_date =  get_day(day_str)
 
-    year, month, day =  get_day(day_str)
-
-    assert year == expected_year
-    assert month == expected_month
-    assert day == expected_day
+    assert day_date == expected_date
 
 
 @pytest.mark.parametrize(
     "day_str, expected_year, expected_month, expected_day",
     [
-        ('2019 12 31', '2019', '12', '31'),
-        ('1977 11 8', '1977', '11', '8'),
-        ('2001 2 30', '2001', '2', '30')
+        ('2019 12 31', 2019, 12, 31),
+        ('1977 11 8', 1977, 11, 8),
+        ('2001 2 28', 2001, 2, 28)
 ])
 def test_get_day_with_spaces(day_str, expected_year, expected_month, expected_day):
+    expected_date = date(expected_year, expected_month, expected_day)
+    day_date =  get_day(day_str)
 
-    year, month, day =  get_day(day_str)
-
-    assert year == expected_year
-    assert month == expected_month
-    assert day == expected_day
+    assert day_date == expected_date
 
 
 @pytest.mark.parametrize(
     "day_str, expected_year, expected_month, expected_day",
     [
-        ('2019/12/31', '2019', '12', '31'),
-        ('1977/11/8', '1977', '11', '8'),
-        ('2001/2/30', '2001', '2', '30')
+        ('2019/12/31', 2019, 12, 31),
+        ('1977/11/8', 1977, 11, 8),
+        ('2001/2/28', 2001, 2, 28)
 ])
 def test_get_day_with_slash(day_str, expected_year, expected_month, expected_day):
+    expected_date = date(expected_year, expected_month, expected_day)
+    day_date =  get_day(day_str)
 
-    year, month, day =  get_day(day_str)
-
-    assert year == expected_year
-    assert month == expected_month
-    assert day == expected_day
+    assert day_date == expected_date
 
 
 @pytest.mark.parametrize(
     "day_str, expected_year, expected_month, expected_day",
     [
-        ('2019-12-31', '2019', '12', '31'),
-        ('1977-11-8', '1977', '11', '8'),
-        ('2001-2-30', '2001', '2', '30')
+        ('2019-12-31', 2019, 12, 31),
+        ('1977-11-8', 1977, 11, 8),
+        ('2001-2-28', 2001, 2, 28)
 ])
 def test_get_day_with_dash(day_str, expected_year, expected_month, expected_day):
+    expected_date = date(expected_year, expected_month, expected_day)
+    day_date =  get_day(day_str)
 
-    year, month, day =  get_day(day_str)
-
-    assert year == expected_year
-    assert month == expected_month
-    assert day == expected_day
+    assert day_date == expected_date
 
 
 def test_get_day_with_bad_string():
