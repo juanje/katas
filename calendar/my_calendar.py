@@ -1,8 +1,12 @@
+"""Simple module to check for working days."""
 from datetime import date
 import re
 
+
 class CalendarFormatError(Exception):
+    # pylint: disable=missing-class-docstring
     pass
+
 
 def get_day(day_str):
     """Get the date from a string
@@ -22,6 +26,7 @@ def get_day(day_str):
         return day_date
 
     raise CalendarFormatError("The date's format is not supported")
+
 
 def is_workday(day):
     """Get a day and tell if is working day or not
