@@ -1,5 +1,5 @@
 import pytest
-from my_calendar import get_day, CalendarFormatError
+from my_calendar import get_day, CalendarFormatError, is_workday
 from datetime import date
 
 @pytest.mark.parametrize(
@@ -65,3 +65,12 @@ def test_get_day_with_bad_string():
             CalendarFormatError,
             match="The date's format is not supported"):
         get_day(bad_string)
+
+def test_workday_with_monday():
+    day = date(2020, 7, 6)
+    assert is_workday(day)
+
+
+def test_workday_with_sunday():
+    day = date(2020, 7, 5)
+    assert not is_workday(day)

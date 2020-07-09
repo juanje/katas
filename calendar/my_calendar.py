@@ -22,3 +22,17 @@ def get_day(day_str):
         return day_date
 
     raise CalendarFormatError("The date's format is not supported")
+
+def is_workday(day):
+    """Get a day and tell if is working day or not
+
+    The day attibute is a datetime.date object.
+
+    Working days: from Monday to Friday
+    Non-Working days: Saturday and Sunday
+    """
+    weekday = day.isoweekday()
+    if weekday in range(1, 6):
+        return True
+
+    return False
